@@ -107,7 +107,26 @@ h1, h2, h3 {
 }
 
 h1 { font-size: 4.5rem; letter-spacing: -0.02em; }
-h2 { font-size: 3rem; margin-bottom: 3rem; text-align: center; }
+h2 { 
+    font-size: 3rem; 
+    margin-bottom: 3rem; 
+    text-align: center; 
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-orange);
+    margin: 0.5rem auto 0;
+    animation: slideWidth 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+}
 h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
 a {
@@ -140,6 +159,19 @@ header {
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 0.05em;
+    position: relative;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-glow);
+    animation: slideWidth 0.8s ease-out 0.3s forwards;
 }
 
 .nav-links {
@@ -153,6 +185,23 @@ header {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-glow);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
 }
 
 .nav-links a:hover {
@@ -217,8 +266,8 @@ header {
 .hero-title {
     background: linear-gradient(180deg, #111, #555);
     -webkit-background-clip: text;
-  
     margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-subtitle {
@@ -226,12 +275,14 @@ header {
     color: var(--text-secondary);
     margin-bottom: 3rem;
     line-height: 1.8;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .btn {
@@ -241,7 +292,45 @@ header {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 500;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* RIPPLE EFFECT */
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleAnimation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleAnimation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
 
 .btn-primary {
@@ -251,8 +340,8 @@ header {
 
 .btn-primary:hover {
     background: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary {
@@ -262,8 +351,10 @@ header {
 }
 
 .btn-secondary:hover {
-    border-color: var(--text-primary);
-    transform: translateY(-2px);
+    border-color: var(--accent-glow);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 138, 101, 0.2);
+    color: var(--accent-glow);
 }
 
 /* ABOUT */
@@ -391,18 +482,38 @@ header {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 2rem;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 138, 101, 0.1) 0%, transparent 70%);
+    transform: translate(0, 0);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    top: -30%;
+    left: -30%;
 }
 
 .card:hover {
     background: var(--card-hover);
     border-color: var(--accent-orange);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 138, 101, 0.2);
 }
 
 .card-content {
@@ -430,11 +541,25 @@ header {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card-link::after {
+    content: '→';
+    opacity: 0;
+    margin-left: -8px;
+    transition: all 0.3s ease;
 }
 
 .card-link:hover {
-    gap: 8px;
+    gap: 10px;
     color: #fff;
+}
+
+.card-link:hover::after {
+    opacity: 1;
+    margin-left: 0;
 }
 
 .tag {
@@ -474,22 +599,32 @@ header {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .cert-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(211, 84, 0, 0.05));
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 138, 101, 0.15), transparent);
+    transition: left 0.6s ease;
 }
 
 .cert-card:hover::before {
-    opacity: 1;
+    left: 100%;
+}
+
+.cert-card:hover {
+    border-color: var(--accent-orange);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 138, 101, 0.15);
 }
 
 .cert-card h3 {
@@ -515,6 +650,11 @@ header {
 
 .cert-card:hover h3 {
     color: var(--accent-glow);
+    animation: slideInRight 0.4s ease;
+}
+
+.cert-card:hover p {
+    animation: slideInLeft 0.4s ease;
 }
 
 /* Modal Styles */
@@ -604,6 +744,19 @@ header {
     display: block; /* Removes bottom space */
 }
 
+.modal-media {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+#img-frame {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 /* FOOTER */
 .footer {
     border-top: 1px solid var(--border-color);
@@ -679,6 +832,58 @@ header {
     60% {transform: translateY(-3px);}
 }
 
+/* ANIMATION KEYFRAMES */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 138, 101, 0), 0 0 20px rgba(255, 138, 101, 0);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 138, 101, 0.6), 0 0 40px rgba(255, 138, 101, 0.3);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 138, 101, 0), 0 0 20px rgba(255, 138, 101, 0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideWidth {
+    to {
+        width: 100%;
+    }
+}
+
 /* SCROLL ANIMATION */
 .animate-hidden {
     opacity: 0;
@@ -731,16 +936,34 @@ header {
     
     /* Modal adjustment for mobile */
     .modal-content {
-        max-height: 90vh; /* Taller on mobile if needed */
-        border-radius: 8px;
+        width: 90%;
+        max-height: 80vh; /* Limit height */
+        border-radius: 12px;
+        margin: auto;
+    }
+
+    .modal.mode-image .modal-content {
+        height: auto;
+    }
+
+    .modal.mode-pdf .modal-content {
+        height: 80vh;
     }
     
     .close-modal {
         top: 10px;
         right: 10px;
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
+        width: 44px; /* Touch friendly */
+        height: 44px;
+        font-size: 1.5rem;
+        background: rgba(0, 0, 0, 0.7); /* High contrast */
+        color: #fff;
+        backdrop-filter: blur(4px);
+    }
+
+    .modal-media {
+        max-height: 80vh; /* Ensure image doesn't overflow */
+        background: transparent;
     }
 }
 
