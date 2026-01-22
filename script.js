@@ -148,3 +148,55 @@ animatedElements.forEach(el => {
     el.classList.add('animate-hidden');
     observer.observe(el);
 });
+
+// PARALLAX EFFECT ON SCROLL
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.orb');
+    
+    parallaxElements.forEach((el, index) => {
+        el.style.transform = `translate(${scrolled * 0.5}px, ${scrolled * 0.3}px)`;
+    });
+});
+
+// MOUSE GLOW EFFECT ON CARDS
+document.addEventListener('mousemove', (e) => {
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+    });
+});
+
+// BUTTON RIPPLE EFFECT
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// Fade in hero content on load
+window.addEventListener('load', () => {
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        heroContent.style.animation = 'fadeInUp 0.8s ease-out';
+    }
+});
