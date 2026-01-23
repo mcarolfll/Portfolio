@@ -159,7 +159,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-<<<<<<< HEAD
+
 // MOUSE GLOW EFFECT ON BACKGROUND
 document.addEventListener('mousemove', (e) => {
     const gradientBg = document.querySelector('.gradient-bg');
@@ -202,8 +202,7 @@ function createFloatingParticles() {
 // Iniciar geração de partículas
 createFloatingParticles();
 
-=======
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
 // MOUSE GLOW EFFECT ON CARDS
 document.addEventListener('mousemove', (e) => {
     const cards = document.querySelectorAll('.card');
@@ -336,8 +335,8 @@ window.addEventListener('load', () => {
         // Iniciar typewriter após 0.8s (quando fade-in terminar)
         setTimeout(typeFirstLine, 200);
     }
-<<<<<<< HEAD
+
 });
-=======
-});
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
+
+
