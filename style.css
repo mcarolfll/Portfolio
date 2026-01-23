@@ -389,7 +389,7 @@ header {
     -webkit-background-clip: text;
     margin-bottom: 1.5rem;
     animation: fadeInUp 0.8s ease-out;
-<<<<<<< HEAD
+
     display: inline-block;
     max-width: 100%;
     overflow: visible;
@@ -406,8 +406,7 @@ header {
     margin-left: 2px;
     animation: cursor-blink 1s infinite;
     vertical-align: middle;
-=======
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
 }
 
 .hero-subtitle {
@@ -627,10 +626,10 @@ header {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-<<<<<<< HEAD
+
     min-height: 280px;
-=======
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
+
     position: relative;
     overflow: hidden;
 }
@@ -774,11 +773,11 @@ header {
     border: 1px solid var(--border-color);
     padding: 2rem;
     border-radius: 12px;
-<<<<<<< HEAD
+
     transition: all 0.3s ease;
-=======
+
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
 }
 
 .cert-card::before {
@@ -788,13 +787,13 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
-<<<<<<< HEAD
+
     background: transparent;
     transition: all 0.3s ease;
-=======
+
     background: linear-gradient(90deg, transparent, rgba(255, 138, 101, 0.15), transparent);
     transition: left 0.6s ease;
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
 }
 
 .cert-card:hover::before {
@@ -1068,7 +1067,6 @@ header {
     }
 }
 
-<<<<<<< HEAD
 @keyframes typewriter {
     from {
         width: 0;
@@ -1088,8 +1086,7 @@ header {
     50%, 100% { opacity: 0; }
 }
 
-=======
->>>>>>> d1096f1f26f88a82dac7da005e83e2d57f396800
+
 /* SCROLL ANIMATION */
 .animate-hidden {
     opacity: 0;
