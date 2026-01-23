@@ -159,6 +159,48 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// MOUSE GLOW EFFECT ON BACKGROUND
+document.addEventListener('mousemove', (e) => {
+    const gradientBg = document.querySelector('.gradient-bg');
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    
+    // Aplicar movimento sutil ao fundo baseado na posição do mouse
+    gradientBg.style.backgroundPosition = `${x}% ${y}%`;
+});
+
+// GENERATE FLOATING PARTICLES
+function createFloatingParticles() {
+    const container = document.querySelector('.particles-container');
+    
+    // Criar partículas periodicamente
+    setInterval(() => {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Posição aleatória no topo
+        const startX = Math.random() * window.innerWidth;
+        particle.style.left = startX + 'px';
+        particle.style.top = '-10px';
+        
+        // Duração aleatória entre 6-12 segundos
+        const duration = 6 + Math.random() * 6;
+        particle.style.animationDuration = duration + 's';
+        
+        // Variação de movimento horizontal
+        const offsetX = (Math.random() - 0.5) * 200;
+        particle.style.setProperty('--offset-x', offsetX + 'px');
+        
+        container.appendChild(particle);
+        
+        // Remover partícula após animação
+        setTimeout(() => particle.remove(), duration * 1000);
+    }, 300);
+}
+
+// Iniciar geração de partículas
+createFloatingParticles();
+
 // MOUSE GLOW EFFECT ON CARDS
 document.addEventListener('mousemove', (e) => {
     const cards = document.querySelectorAll('.card');
@@ -198,5 +240,97 @@ window.addEventListener('load', () => {
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
         heroContent.style.animation = 'fadeInUp 0.8s ease-out';
+    }
+    
+    // Typewriter effect para o título - linha por linha com cursor acompanhando
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        // Limpar o título
+        heroTitle.innerHTML = '';
+        
+        // Criar cursor
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor';
+        
+        // Primeira linha: "Software Developer"
+        const firstText = 'Software Developer';
+        let index1 = 0;
+        
+        const typeFirstLine = () => {
+            if (index1 < firstText.length) {
+                // Remover cursor antes de adicionar texto
+                if (heroTitle.lastChild && heroTitle.lastChild.classList.contains('typing-cursor')) {
+                    heroTitle.removeChild(heroTitle.lastChild);
+                }
+                
+                // Criar elemento span para primeira linha
+                if (index1 === 0) {
+                    const line1 = document.createElement('span');
+                    line1.className = 'highlight';
+                    line1.id = 'line1';
+                    heroTitle.appendChild(line1);
+                }
+                
+                // Adicionar letra
+                const line1 = document.getElementById('line1');
+                line1.textContent += firstText[index1];
+                
+                // Adicionar cursor
+                const newCursor = cursor.cloneNode(true);
+                heroTitle.appendChild(newCursor);
+                
+                index1++;
+                setTimeout(typeFirstLine, 80);
+            } else {
+                // Quando primeira linha termina, remove cursor e adiciona quebra de linha
+                if (heroTitle.lastChild && heroTitle.lastChild.classList.contains('typing-cursor')) {
+                    heroTitle.removeChild(heroTitle.lastChild);
+                }
+                
+                const br = document.createElement('br');
+                heroTitle.appendChild(br);
+                
+                setTimeout(typeSecondLine, 300);
+            }
+        };
+        
+        // Segunda linha: "& UI/UX Designer"
+        const typeSecondLine = () => {
+            const secondText = '& UI/UX Designer';
+            let index2 = 0;
+            
+            // Criar elemento para segunda linha
+            const line2 = document.createElement('span');
+            line2.id = 'line2';
+            heroTitle.appendChild(line2);
+            
+            const typeIt = () => {
+                if (index2 < secondText.length) {
+                    // Remover cursor
+                    if (heroTitle.lastChild && heroTitle.lastChild.classList.contains('typing-cursor')) {
+                        heroTitle.removeChild(heroTitle.lastChild);
+                    }
+                    
+                    line2.textContent += secondText[index2];
+                    
+                    // Adicionar cursor
+                    const newCursor = cursor.cloneNode(true);
+                    heroTitle.appendChild(newCursor);
+                    
+                    index2++;
+                    setTimeout(typeIt, 80);
+                } else {
+                    // Remover cursor quando termina
+                    if (heroTitle.lastChild && heroTitle.lastChild.classList.contains('typing-cursor')) {
+                        heroTitle.removeChild(heroTitle.lastChild);
+                    }
+                }
+            };
+            
+            typeIt();
+        };
+        
+        // Iniciar typewriter após 0.8s (quando fade-in terminar)
+        setTimeout(typeFirstLine, 200);
     }
 });
