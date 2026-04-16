@@ -1,23 +1,18 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
 if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
 }
 
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
-<<<<<<< HEAD
-=======
-    
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
+
     if (window.location.hash) {
         history.replaceState(null, null, ' ');
     }
 });
 
-<<<<<<< HEAD
+
 // ============================================================
 // LANGUAGE TOGGLE
 // ============================================================
@@ -89,15 +84,15 @@ applyLanguage(currentLang);
 // ============================================================
 const mobileBtn   = document.querySelector('.mobile-menu-btn');
 const mobileMenu  = document.querySelector('.mobile-menu');
-=======
+
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
 const mobileLinks = document.querySelectorAll('.mobile-link');
 
 mobileBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
-<<<<<<< HEAD
+
     const spans = mobileBtn.querySelectorAll('span');
     if (mobileMenu.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -106,7 +101,7 @@ mobileBtn.addEventListener('click', () => {
     } else {
         spans[0].style.transform = 'none';
         spans[1].style.opacity   = '1';
-=======
+
     
  
     const spans = mobileBtn.querySelectorAll('span');
@@ -117,41 +112,37 @@ mobileBtn.addEventListener('click', () => {
     } else {
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
         spans[2].style.transform = 'none';
     }
 });
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
 mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
         const spans = mobileBtn.querySelectorAll('span');
         spans[0].style.transform = 'none';
-<<<<<<< HEAD
+
         spans[1].style.opacity   = '1';
-=======
+
         spans[1].style.opacity = '1';
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
         spans[2].style.transform = 'none';
     });
 });
 
 
-<<<<<<< HEAD
+
 // ============================================================
 // ACTIVE NAV LINK ON SCROLL
 // ============================================================
-=======
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
-<<<<<<< HEAD
+
     let current = "";
     sections.forEach(section => {
         const sectionTop    = section.offsetTop - 150;
@@ -199,7 +190,7 @@ function openModal(url) {
     }
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-=======
+
   let current = "";
   
   sections.forEach(section => {
@@ -249,40 +240,35 @@ function openModal(url) {
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden'; 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
 }
 
 function closeModal() {
     modal.classList.remove('active');
-<<<<<<< HEAD
+ 
     setTimeout(() => { modalFrame.src = ''; imgFrame.src = ''; }, 300);
     document.body.style.overflow = '';
-=======
+
     setTimeout(() => {
         modalFrame.src = ''; 
         imgFrame.src = '';
     }, 300); 
     document.body.style.overflow = ''; 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
 }
 
 certCards.forEach(card => {
     card.addEventListener('click', () => {
         const pdfUrl = card.getAttribute('data-pdf');
-<<<<<<< HEAD
         if (pdfUrl) openModal(pdfUrl);
-=======
         if (pdfUrl) {
             openModal(pdfUrl);
         }
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
     });
 });
 
 closeBtn.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', closeModal);
 
-<<<<<<< HEAD
+ 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
 });
@@ -292,7 +278,7 @@ document.addEventListener('keydown', (e) => {
 // SCROLL ANIMATION (Intersection Observer)
 // ============================================================
 const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-=======
+
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
@@ -305,64 +291,56 @@ const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px"
 };
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate-show');
-<<<<<<< HEAD
+
             observer.unobserve(entry.target);
-=======
+
             observer.unobserve(entry.target); 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
+
         }
     });
 }, observerOptions);
 
-<<<<<<< HEAD
+
 document.querySelectorAll('.hero-content, .section-title, .about-layout, .card, .section-instruction, .footer-content').forEach(el => {
-=======
+
 const animatedElements = document.querySelectorAll('.hero-content, .section-title, .about-content, .card, .section-instruction, .footer-content');
 
 animatedElements.forEach(el => {
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
     el.classList.add('animate-hidden');
     observer.observe(el);
 });
 
 
-<<<<<<< HEAD
 // ============================================================
 // PARALLAX ORBS
 // ============================================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     document.querySelectorAll('.orb').forEach(el => {
-=======
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.orb');
     
     parallaxElements.forEach((el, index) => {
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
         el.style.transform = `translate(${scrolled * 0.5}px, ${scrolled * 0.3}px)`;
     });
 });
 
 
-<<<<<<< HEAD
 // ============================================================
 // MOUSE GRADIENT
 // ============================================================
-=======
 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
 document.addEventListener('mousemove', (e) => {
     const gradientBg = document.querySelector('.gradient-bg');
     const x = (e.clientX / window.innerWidth) * 100;
     const y = (e.clientY / window.innerHeight) * 100;
-<<<<<<< HEAD
     gradientBg.style.backgroundPosition = `${x}% ${y}%`;
 });
 
@@ -383,7 +361,6 @@ function createFloatingParticles() {
         const offsetX = (Math.random() - 0.5) * 200;
         particle.style.setProperty('--offset-x', offsetX + 'px');
         container.appendChild(particle);
-=======
     
     
     gradientBg.style.backgroundPosition = `${x}% ${y}%`;
@@ -413,12 +390,10 @@ function createFloatingParticles() {
         container.appendChild(particle);
         
         
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
         setTimeout(() => particle.remove(), duration * 1000);
     }, 300);
 }
 
-<<<<<<< HEAD
 createFloatingParticles();
 
 
@@ -430,7 +405,7 @@ document.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
         card.style.setProperty('--mouse-y', (e.clientY - rect.top)  + 'px');
-=======
+
 // Iniciar geração de partículas
 createFloatingParticles();
 
@@ -446,12 +421,10 @@ document.addEventListener('mousemove', (e) => {
         
         card.style.setProperty('--mouse-x', x + 'px');
         card.style.setProperty('--mouse-y', y + 'px');
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
     });
 });
 
 
-<<<<<<< HEAD
 // ============================================================
 // BUTTON RIPPLE
 // ============================================================
@@ -465,7 +438,6 @@ document.querySelectorAll('.btn').forEach(btn => {
         ripple.style.top    = (e.clientY - rect.top  - size / 2) + 'px';
         ripple.classList.add('ripple');
         this.appendChild(ripple);
-=======
 document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         const ripple = document.createElement('span');
@@ -481,13 +453,11 @@ document.querySelectorAll('.btn').forEach(btn => {
         
         this.appendChild(ripple);
         
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
         setTimeout(() => ripple.remove(), 600);
     });
 });
 
 
-<<<<<<< HEAD
 // ============================================================
 // HERO TYPING EFFECT
 // ============================================================
@@ -555,7 +525,6 @@ window.addEventListener('load', () => {
 
     setTimeout(typeFirstLine, 200);
 });
-=======
 window.addEventListener('load', () => {
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
@@ -650,4 +619,3 @@ window.addEventListener('load', () => {
 
 
 
->>>>>>> 85d15700a25a4f2d23ea5ed963a7013d57e46a28
